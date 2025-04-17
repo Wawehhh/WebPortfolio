@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waweh Portfolio</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.min.js"></script>
+  
+  <style>
+    html {
+  scroll-behavior: smooth;
+}
+
+    body {
+      background-color: rgb(0, 7, 19);
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      flex-wrap: wrap;
+    }
+
+    .main-container {
+      position: relative;
+      margin: 30px;
+      height: 100vh;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding-left: 50px;
+      width: 100vw;
+    }
+    .container{
+      background-color: white;
+      margin: 30px;
+      border-radius: 10px;
+      height: 40vh;
+      width: 100vw;
+    }
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  padding: 10px 20px;
+}
+
+.navbar .logo a {
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+}
+
+.navbar .nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .nav-links li {
+  margin: 0 20px;
+}
+
+.navbar .nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.navbar .nav-links a:hover {
+  color: #ccc;
+}
+
+.menu-icon {
+  display: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .navbar .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: black;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 20px;
+  }
+
+  .navbar .nav-links.active {
+    display: flex;
+  }
+
+  .navbar .nav-links li {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+}
+    .bg-bottom, .bg-top {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .bg-bottom {
+      background-image: url("images/Waweh3.gif");
+      z-index: 0;
+    }
+
+    .bg-top {
+      background-image: url("images/bg1.png");
+      mix-blend-mode: screen;
+      background-blend-mode: screen;
+      z-index: 1;
+    }
+
+    @keyframes animateGlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .backlight {
+      position:absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      margin: 0 auto;
+      transform: scale(0.95);
+      filter: blur(2vw);
+      background: linear-gradient(270deg, #0077ff, #00fff2);
+      background-size: 200% 200%;
+      animation: animateGlow 10s ease infinite;
+    }
+
+    .desc {
+      position: relative;
+      margin: 20px;
+      height: 30vh;
+      display: flex;
+      align-items: center;
+      width: 90vw;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .desc.visible {
+      opacity: 1;
+    }
+
+    blockquote {
+      display: block;
+      margin: 0 auto;
+      text-align: center;
+      max-width: 900px;
+    }
+
+    p, cite {
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+/* Define Ballitar City Font */
+@font-face {
+  font-family: 'Candle Quotes';
+  src: url('fonts/Candle Quotes.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+    p {
+      font-family: 'Candle Quotes', Verdana, sans-serif;
+      color: #fff;
+      font-size: 2rem;
+      font-style: italic;
+      font-weight: 300;
+      padding-bottom: 2rem;
+    }
+
+    span {
+      will-change: opacity;
+      opacity: 0;
+    }
+
+    span.animate {
+      opacity: 1;
+      -webkit-filter: blur(0) !important;
+    }
+
+    cite {
+      font-family: 'Candle Quotes', Verdana, sans-serif;
+      font-size: 1.2rem;
+      color: #00eeff;
+      opacity: 0;
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    cite.animate {
+      opacity: 1;
+    }
+    .intext{
+      margin: 100px;
+      margin-left: 40px;
+      color: black;
+    }
+    .intro{
+      margin-bottom: 0px;
+      color: black;
+      font-family: 'Courier New', Courier, monospace;
+    }
+    h1{
+      margin-top: 0px;
+      font-size: 100px;
+      word-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <div class="backlight"></div>
+
+  <div class="main-container">
+    <div class="bg-bottom"></div>
+    <div class="bg-top">
+      <nav class="navbar">
+        <div class="logo">
+          <a href="#"><img src="images/waweh.png" alt="waweh" width="100px"></a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+      </nav>
+
+      <div class="intext">
+        <h3 class="intro">print("Hello, World! I am,")</h3>
+        <h1>RUEL PANTI <br> WEB DEVELOPER</h1>
+      </div>
+      
+    </div>
+  </div>
+  
+
+  <div class="desc" id="fade-section">
+    <blockquote>
+      <p>
+        <span data-duration="1.1" data-delay=".23" data-blur="6">“Sometimes&nbsp;</span>
+        <span data-duration="1.4" data-delay=".43" data-blur="3" style="color: rgb(255, 123, 0);">life&nbsp;</span>
+        <span data-duration="1.8" data-delay=".42" data-blur="5">is&nbsp;</span>
+        <span data-duration="1.2" data-delay=".25" data-blur="9">like&nbsp;</span>
+        <span data-duration="1.7" data-delay=".30" data-blur="4">a&nbsp;</span>
+        <span data-duration="1.2" data-delay=".29" data-blur="3" style="color: rgb(0, 132, 255);">tunnel.&nbsp;</span>
+        <span data-duration="1.4" data-delay=".26" data-blur="5">You&nbsp;</span>
+        <span data-duration="1.7" data-delay=".19" data-blur="9">can’t&nbsp;</span>
+        <span data-duration="1.2" data-delay=".11" data-blur="5">always&nbsp;</span>
+        <span data-duration="1.9" data-delay=".19" data-blur="2">see&nbsp;</span>
+        <span data-duration="1.2" data-delay=".36" data-blur="9">the&nbsp;</span>
+        <span data-duration="1.8" data-delay=".17" data-blur="3" style="color: rgb(251, 255, 0);">light&nbsp;</span>
+        <span data-duration="1.2" data-delay=".30" data-blur="10">at&nbsp;</span>
+        <span data-duration="1.5" data-delay=".50" data-blur="4">the&nbsp;</span>
+        <span data-duration="1.8" data-delay=".19" data-blur="2">end&nbsp;</span>
+        <span data-duration="1.3" data-delay=".18" data-blur="4">of&nbsp;</span>
+        <span data-duration="1.4" data-delay=".23" data-blur="3">the&nbsp;</span>
+        <span data-duration="1.2" data-delay=".25" data-blur="5">tunnel,&nbsp;</span>
+        <span data-duration="1.3" data-delay=".21" data-blur="6">but&nbsp;</span>
+        <span data-duration="1.4" data-delay=".28" data-blur="4">if&nbsp;</span>
+        <span data-duration="1.3" data-delay=".30" data-blur="5">you&nbsp;</span>
+        <span data-duration="1.2" data-delay=".33" data-blur="3">keep&nbsp;</span>
+        <span data-duration="1.5" data-delay=".29" data-blur="6">moving,&nbsp;</span>
+        <span data-duration="1.2" data-delay=".22" data-blur="3">you&nbsp;</span>
+        <span data-duration="1.4" data-delay=".26" data-blur="5">will&nbsp;</span>
+        <span data-duration="1.3" data-delay=".24" data-blur="4">come&nbsp;</span>
+        <span data-duration="1.5" data-delay=".28" data-blur="3">to&nbsp;</span>
+        <span data-duration="1.2" data-delay=".25" data-blur="2">a&nbsp;</span>
+        <span data-duration="1.4" data-delay=".27" data-blur="3" style="color: rgb(225, 0, 255);">better&nbsp;</span>
+        <span data-duration="1.3" data-delay=".29" data-blur="4" style="color: rgb(225, 0, 255);">place.”&nbsp;</span>
+      </p>
+      <cite> — General Iroh</cite>
+    </blockquote>
+  </div>
+
+    <div class="container">
+
+    </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+  <script>
+    const words = document.getElementsByTagName('span');
+    const cite = document.getElementsByTagName('cite')[0];
+    const descSection = document.getElementById('fade-section');
+
+    const animate = () => {
+      for (let i = 0; i < words.length; i++) {
+        const word = words[i];
+        const duration = parseFloat(word.dataset.duration);
+        const delay = parseFloat(word.dataset.delay);
+        const blur = word.dataset.blur;
+
+        TweenLite.set(word, {
+          'webkitFilter': `blur(${blur}px)`,
+          className: "-=animate"
+        });
+
+        TweenLite.to(word, duration, {
+          delay: delay,
+          opacity: 1,
+          webkitFilter: 'blur(0px)',
+          className: "+=animate"
+        });
+      }
+
+      TweenLite.set(cite, { className: "-=animate", opacity: 0 });
+      TweenLite.to(cite, 1, {
+        delay: 1,
+        opacity: 1,
+        className: "+=animate"
+      });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          descSection.classList.add('visible');
+          animate();
+        } else {
+          descSection.classList.remove('visible');
+          // Reset all words and cite
+          for (let i = 0; i < words.length; i++) {
+            TweenLite.set(words[i], {
+              opacity: 0,
+              className: "-=animate"
+            });
+          }
+          TweenLite.set(cite, {
+            opacity: 0,
+            className: "-=animate"
+          });
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    observer.observe(descSection);
+  </script>
+  <script>function toggleMenu() {
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
+  }
+  </script>
+</body>
+</html>
