@@ -223,7 +223,7 @@
     blockquote {
       text-align: center;
       max-width: 900px;
-      margin: 0 auto;
+      margin: 20px;
     }
   
     p, cite {
@@ -279,6 +279,50 @@
       display: none; /* Optional: Hide backlight to make cleaner on mobile */
     }
   }
+  /* Mobile/Phone Adjustment (for max-width 500px, like Pixel 7) */
+@media (max-width: 500px) {
+  .main-container {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    border-radius: 30px;
+    overflow: hidden;
+    margin-bottom: 50px;
+    position: relative; /* Ensure the text appears above everything */
+  }
+
+  .intext {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    position: relative; /* Ensure intext stays above the overlay */
+    z-index: 2; /* Make sure it appears above the background and overlay */
+  }
+  .bg-bottom {
+  background-image: url("images/Cropped.gif");
+  background-size: 600px auto;  /* 500px width and auto for height */
+  background-position: top center;  /* Position at the top and horizontally centered */
+  background-repeat: no-repeat;
+  z-index: 0;
+  position: absolute;  /* Ensure it's positioned correctly in the container */
+  top: 0;  /* Align it to the top */
+  left: 50%;  /* Center horizontally */
+  transform: translateX(-50%);  /* Adjust for proper centering */
+}
+
+    .bg-top {
+      background-image: url("images/Mobile.png");
+      mix-blend-mode: screen;
+      background-size: cover;
+      background-position: top center; /* Put black overlay on top */
+      z-index: 1;
+    }
+
+  .backlight {
+    display: none; /* Optional: Hide backlight to make it cleaner on mobile */
+  }
+}
 </style>
 
   </style>
