@@ -171,7 +171,7 @@
     }
   
     .intext {
-  margin: 100px 40px 0 40px;
+  margin: 150px 40px 0 150px;
   color: black;
   text-align: center;
   float: left;
@@ -192,7 +192,7 @@
       font-family: 'Boxkan', sans-serif;
       font-size: 150px;
       line-height: 100px;
-      -webkit-text-stroke: 1px rgb(255, 255, 255);
+      -webkit-text-stroke: 2px rgb(255, 255, 255);
     }
   
     .typewriter {
@@ -243,7 +243,9 @@
       font-style: normal;
       font-weight: 500;
     }
-  
+  #bio-description{
+    font-size: 1.2rem;
+  }
     /* Mobile/Tablet Adjustment */
   @media (max-width: 1024px) {
     .main-container {
@@ -254,11 +256,15 @@
       border-radius: 30px;
       overflow: hidden;
       margin-bottom: 50px;
+
+    }
+    #bio-description{
+      font-size: 1rem;
     }
     .intext {
     margin-left: 40px;
     margin-right: 40px;
-    display: block; /* Or use flexbox if more control needed */
+    margin-top: 50px;
   }
 
     .bg-bottom {
@@ -291,13 +297,24 @@
     margin-bottom: 50px;
     position: relative; /* Ensure the text appears above everything */
   }
-
+  h1{
+    margin-bottom: 0px;
+  }
+  .intro{
+    color: white;
+  }
+  #bio-description{
+    font-size: .8rem;
+    margin-top: 5px;
+  }
   .intext {
     margin-left: auto;
     margin-right: auto;
     display: block;
     position: relative; /* Ensure intext stays above the overlay */
     z-index: 2; /* Make sure it appears above the background and overlay */
+    margin-top: 50px;
+    display: block; /* Or use flexbox if more control needed */
   }
   .bg-bottom {
   background-image: url("images/Cropped.gif");
@@ -353,7 +370,10 @@
           <span class="name">RUEL PANTI</span><br>
           <span class="typewriter" id="typewriter"></span>
         </h1>
+        <p id="bio-description" style="font-family: 'Segoe UI', sans-serif; color: black; font-weight: bold; max-width: 600px;"></p>
       </div>
+      
+      
     </div>
   </div>
 
@@ -397,7 +417,30 @@
 
   <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
-
+  <script>
+    const descriptionText = "Aspiring IT professional with a solid background in web development (HTML, CSS, Java) and hands-on experience in video editing, 2D/3D animation, and digital content creation. Passionate about merging creativity with technology to bring concepts to life.";
+  
+    const darkBgColors = ["#44475a", "#37474f", "#3e4a61", "#5c6bc0", "#455a64", "#6d4c41", "#546e7a", "#283593", "#4e342e", "#2c3e50"];
+    const lightTextColors = ["#ffffff", "#f5f5f5", "#e0e0e0", "#ffeb3b", "#fff176", "#b2ebf2"];
+  
+    const words = descriptionText.split(" ");
+  
+    const styledWords = words.map(word => {
+      const shouldStyle = Math.random() < 0.9; // ~90% of words styled
+      if (shouldStyle) {
+        const bg = darkBgColors[Math.floor(Math.random() * darkBgColors.length)];
+        const color = lightTextColors[Math.floor(Math.random() * lightTextColors.length)];
+        return `<span style="color: ${color}; background-color: ${bg}; font-weight: bold; padding: 4px 8px; border-radius: 6px; margin: 2px; display: inline-block;">${word}</span>`;
+      }
+      return `<span style="font-weight: bold; margin: 2px;">${word}</span>`;
+    });
+  
+    document.getElementById("bio-description").innerHTML = styledWords.join(" ");
+  </script>
+  
+  
+  
+  
   <script>
     const typewriterEl = document.getElementById("typewriter");
     const words = ["Web Developer", "Encoder", "Designer", "Animator"];
