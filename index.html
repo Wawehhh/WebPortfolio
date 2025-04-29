@@ -171,10 +171,11 @@
     }
   
     .intext {
-  margin: 150px 40px 0 150px;
+  margin: 70px 40px 0 150px;
   color: black;
   text-align: center;
   float: left;
+  
 }
   
     .intro {
@@ -196,9 +197,10 @@
     }
   
     .typewriter {
+      color: black;
       font-family: 'Boxkan', monospace;
       font-size: 40px;
-      border-right: 2px solid white;
+      border-right: 2px solid black;
       white-space: nowrap;
       overflow: hidden;
       display: inline-block;
@@ -206,15 +208,18 @@
     }
   
     .desc {
-      position: relative;
-      margin: 20px;
-      height: 30vh;
-      display: flex;
-      align-items: center;
-      width: 90vw;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
+  position: relative;
+  margin: 20px auto;
+  height: 30vh;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  width: 90vw;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  text-align: center; /* Optional: reinforces centering */
+}
+
   
     .desc.visible {
       opacity: 1;
@@ -246,6 +251,145 @@
   #bio-description{
     font-size: 1.2rem;
   }
+  .carousel-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2vw;
+  flex-direction: row; /* Ensure it stays row on all screen sizes */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.carousel {
+  display: flex;
+  gap: 2vw;
+  transition: transform 0.5s ease;
+  -webkit-overflow-scrolling: touch;
+}
+
+.icon {
+  width: 10vw;
+  height: 10vw;
+  max-width: 60px;
+  max-height: 60px;
+  opacity: 0.5;
+  transform: scale(0.8);
+  transition: transform 0.3s, opacity 0.3s;
+  scroll-snap-align: center;
+}
+
+.icon.center {
+  width: 16vw;
+  height: 16vw;
+  max-width: 100px;
+  max-height: 100px;
+  opacity: 1;
+  transform: scale(1.2);
+}
+#quotes-container {
+    margin: 60px;
+  }
+  @keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, rgb(255, 255, 255), rgb(0, 47, 255), rgb(255, 255, 255));
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.shimmer-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-box::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 2.5s infinite;
+  z-index: 2;
+}
+
+   /* Quiz Stack Styling */
+   #quiz-stacks {
+      width: 100%;
+      height: 500vh;
+      position: relative;
+    }
+   #quiz-stackz {
+      width: 100%;
+      height: 200vh;
+      position: relative;
+    }
+   #quiz-stack {
+      width: 100%;
+      height: 500vh;
+      position: relative;
+    }
+    
+    .quiz-slide {
+      -webkit-text-stroke: 2px rgb(255, 255, 255);
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 90%;
+      margin: 0 auto;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3rem;
+      color: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    .quiz-slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); /* darken overlay */
+  z-index: 0;
+  border-radius: 16px;
+}
+
+.quiz-slide .quiz-info {
+  z-index: 1;
+  position: relative;
+  font-family: 'Boxkan', sans-serif;
+  font-size: 8rem;
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 10px;
+  box-shadow: 0 0 10px black;
+}
+h2{
+  font-size: 8rem;
+}
     /* Mobile/Tablet Adjustment */
   @media (max-width: 1024px) {
     .main-container {
@@ -266,7 +410,9 @@
     margin-right: 40px;
     margin-top: 50px;
   }
-
+  #quotes-container {
+    margin: 60px;
+  }
     .bg-bottom {
       background-image: url("images/Waweh3.gif");
       background-size: cover;
@@ -284,6 +430,29 @@
     .backlight {
       display: none; /* Optional: Hide backlight to make cleaner on mobile */
     }
+    .carousel-wrapper {
+    gap: 3vw;
+  }
+
+  .icon {
+    width: 12vw;
+    height: 12vw;
+    max-width: 50px;
+    max-height: 50px;
+  }
+
+  .icon.center {
+    width: 20vw;
+    height: 20vw;
+    max-width: 80px;
+    max-height: 80px;
+  }
+  .quiz-slide {
+        width: 90%;
+      }
+      h2{
+    font-size: 7rem;
+  }
   }
   /* Mobile/Phone Adjustment (for max-width 500px, like Pixel 7) */
 @media (max-width: 500px) {
@@ -297,15 +466,12 @@
     margin-bottom: 50px;
     position: relative; /* Ensure the text appears above everything */
   }
-  h1{
-    margin-bottom: 0px;
-  }
+
   .intro{
     color: white;
   }
-  #bio-description{
-    font-size: .8rem;
-    margin-top: 5px;
+  #quotes-container {
+    margin: 60px;
   }
   .intext {
     margin-left: auto;
@@ -313,7 +479,7 @@
     display: block;
     position: relative; /* Ensure intext stays above the overlay */
     z-index: 2; /* Make sure it appears above the background and overlay */
-    margin-top: 50px;
+    margin-top: 0px;
     display: block; /* Or use flexbox if more control needed */
   }
   .bg-bottom {
@@ -339,11 +505,43 @@
   .backlight {
     display: none; /* Optional: Hide backlight to make it cleaner on mobile */
   }
-}
-</style>
+  .carousel-wrapper {
+    border: 2px solid white;
+    flex-direction: column;
+    align-items: center;
+  }
 
-  </style>
-  
+  .carousel {
+    justify-content: center;
+    gap: 4vw;
+  }
+
+  .icon {
+    width: 14vw;
+    height: 14vw;
+    max-width: 40px;
+    max-height: 40px;
+  }
+
+  .icon.center {
+    width: 22vw;
+    height: 22vw;
+    max-width: 70px;
+    max-height: 70px;
+  }
+  .quiz-slide {
+        width: 90%;
+        font-size: 2rem;
+      }
+  h2{
+    font-size: 5rem;
+  }
+}
+.carousel-container{
+  margin-bottom: 100px;
+}
+
+</style>
 </head>
 <body>
   <div class="backlight"></div>
@@ -377,6 +575,7 @@
     </div>
   </div>
 
+  <div id="quotes-container">
   <div class="desc" id="fade-section">
     <blockquote>
       <p>
@@ -414,42 +613,106 @@
       <cite> — General Iroh</cite>
     </blockquote>
   </div>
+</div>
+
+<!-- QUIZZES TITLE -->
+<div id="quizzes-section" style="text-align: center; margin-top: 0px;" data-scroll-section>
+  <h2 style="font-family: 'Boxkan', sans-serif; color: white; position: sticky;">PRE-TEST</h2>
+</div>
+
+<!-- QUIZ STACK -->
+<div id="quiz-stacks" data-scroll-section>
+  <div class="quiz-slide shimmer-box" style="background-image: url('images/pre1.JPG');">
+    <div class="quiz-info shimmer-text">Pre-Test 1 Score: 9/15</div>
+  </div>
+  <div class="quiz-slide shimmer-box" style="background-image: url('images/pre2.JPG');">
+    <div class="quiz-info shimmer-text">Pre-Test 2 Score: 7/15</div>
+  </div>
+  <div class="quiz-slide shimmer-box" style="background-image: url('images/pre3.JPG');">
+    <div class="quiz-info shimmer-text">Pre-Test 3 Score: 12/15</div>
+  </div>
+  <div class="quiz-slide shimmer-box" style="background-image: url('images/pre4.JPG');">
+    <div class="quiz-info shimmer-text">Pre-Test 4 Score: 9/15</div>
+  </div>
+  <div class="quiz-slide shimmer-box" style="background-image: url('images/pre5.JPG');">
+    <div class="quiz-info shimmer-text">Pre-Test 5 Score: 18/20</div>
+  </div>
+</div>
+
+<!-- QUIZZES TITLE -->
+<div id="quizzes-section" style="text-align: center; margin-top: 0px;" data-scroll-section>
+  <h2 style="font-family: 'Boxkan', sans-serif; color: white; position: sticky;">POST-TESTS</h2>
+</div>
+
+<!-- QUIZ STACK -->
+<div id="quiz-stack" data-scroll-section>
+  <div class="quiz-slide shimmer-box" style="background-image: url('images/quiz1.png');">
+    <div class="quiz-info shimmer-text">Post-Test 1 Score: 14/20</div>
+  </div>
+  <div class="quiz-slide shimmer-box" style="background-image: url('images/quiz2.png');">
+    <div class="quiz-info shimmer-text">Post-Test 2 Score: 19/20</div>
+  </div>
+  <div class="quiz-slide shimmer-box" style="background-image: url('images/quiz3.png');">
+    <div class="quiz-info shimmer-text">Post-Test 3 Score: 13/20</div>
+  </div>
+  <div class="quiz-slide shimmer-box" style="background-image: url('images/quiz4.png');">
+    <div class="quiz-info shimmer-text">Post-Test 4 Score: 17/20</div>
+  </div>
+  <div class="quiz-slide shimmer-box" style="background-image: url('images/quiz5.png');">
+    <div class="quiz-info shimmer-text">Post-Test 5 Score: 16/20</div>
+  </div>
+</div>
+
+<!-- QUIZZES TITLE -->
+<div id="quizzes-section" style="text-align: center; margin-top: 0px;" data-scroll-section>
+  <h2 style="font-family: 'Boxkan', sans-serif; color: white; position: sticky;">MIDTERMS</h2>
+</div>
+
+<!-- QUIZ STACK -->
+<div id="quiz-stackz" data-scroll-section>
+  <div class="quiz-slide shimmer-box" style="background-image: url('images/quiz1.png');">
+    <div class="quiz-info shimmer-text">Long Quiz Score: 27/40</div>
+  </div>
+  <div class="quiz-slide shimmer-box" style="background-image: url('images/quiz2.png');">
+    <div class="quiz-info shimmer-text">Midterm Score: 35/70</div>
+  </div>
+
+
+  
 
   <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
   <script>
     const descriptionText = "Aspiring IT professional with a solid background in web development (HTML, CSS, Java) and hands-on experience in video editing, 2D/3D animation, and digital content creation. Passionate about merging creativity with technology to bring concepts to life.";
   
-    const darkBgColors = ["#44475a", "#37474f", "#3e4a61", "#5c6bc0", "#455a64", "#6d4c41", "#546e7a", "#283593", "#4e342e", "#2c3e50"];
-    const lightTextColors = ["#ffffff", "#f5f5f5", "#e0e0e0", "#ffeb3b", "#fff176", "#b2ebf2"];
+    const darkBgColors = [
+      "#44475a", "#37474f", "#3e4a61", "#5c6bc0", "#455a64", "#6d4c41", 
+      "#546e7a", "#283593", "#4e342e", "#2c3e50", "#880e4f", "#1b5e20", "#004d40"
+    ];
+    const lightTextColors = [
+      "#ffffff", "#f5f5f5", "#e0e0e0", "#ffeb3b", "#fff176", "#b2ebf2", 
+      "#ffd54f", "#c5e1a5", "#ffccbc", "#fff59d", "#80d8ff", "#e1bee7"
+    ];
   
     const words = descriptionText.split(" ");
   
     const styledWords = words.map(word => {
-      const shouldStyle = Math.random() < 0.9; // ~90% of words styled
-      if (shouldStyle) {
-        const bg = darkBgColors[Math.floor(Math.random() * darkBgColors.length)];
-        const color = lightTextColors[Math.floor(Math.random() * lightTextColors.length)];
-        return `<span style="color: ${color}; background-color: ${bg}; font-weight: bold; padding: 4px 8px; border-radius: 6px; margin: 2px; display: inline-block;">${word}</span>`;
-      }
-      return `<span style="font-weight: bold; margin: 2px;">${word}</span>`;
+      const bg = darkBgColors[Math.floor(Math.random() * darkBgColors.length)];
+      const color = lightTextColors[Math.floor(Math.random() * lightTextColors.length)];
+      return `<span style="color: ${color}; background-color: ${bg}; font-weight: bold; padding: 4px 8px; border-radius: 6px; margin: 2px; display: inline-block;">${word}</span>`;
     });
   
     document.getElementById("bio-description").innerHTML = styledWords.join(" ");
   </script>
-  
-  
-  
-  
   <script>
     const typewriterEl = document.getElementById("typewriter");
-    const words = ["Web Developer", "Encoder", "Designer", "Animator"];
+    const typewriterwords = ["Web Developer", "Encoder", "Designer", "Animator", "Undergraduate Student", "Editor"];
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
 
     function type() {
-      const current = words[wordIndex];
+      const current = typewriterwords[wordIndex];
       let displayed = isDeleting
         ? current.substring(0, charIndex--)
         : current.substring(0, charIndex++);
@@ -461,7 +724,7 @@
         setTimeout(type, 1000);
       } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
-        wordIndex = (wordIndex + 1) % words.length;
+        wordIndex = (wordIndex + 1) % typewriterwords.length;
         setTimeout(type, 300);
       } else {
         setTimeout(type, isDeleting ? 60 : 120);
@@ -517,6 +780,43 @@
     }, { threshold: 0.2 });
 
     observer.observe(descSection);
+  </script>
+  <script>
+  const icons = [
+  "images/blender.png",
+  "images/photoshop.png",
+  "images/flipaclip.png",
+  "images/illustrator.png",
+  "images/filmora.png"
+];
+
+  
+  let currentIndex = 2; // Start with the middle icon as center
+  const carousel = document.getElementById("carousel");
+  
+  function renderCarousel() {
+    carousel.innerHTML = "";
+    for (let i = -2; i <= 2; i++) {
+      const iconIndex = (currentIndex + i + icons.length) % icons.length;
+      const img = document.createElement("img");
+      img.src = icons[iconIndex];
+      img.className = "icon";
+      if (i === 0) img.classList.add("center");
+      carousel.appendChild(img);
+    }
+  }
+  
+  document.getElementById("prevBtn").addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + icons.length) % icons.length;
+    renderCarousel();
+  });
+  
+  document.getElementById("nextBtn").addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % icons.length;
+    renderCarousel();
+  });
+  
+  renderCarousel();
   </script>
 </body>
 </html>
